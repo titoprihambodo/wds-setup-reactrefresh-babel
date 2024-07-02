@@ -1,0 +1,25 @@
+{% import "macros.html" as macros %}
+{% extends "base.html" %}
+
+{% block title %}{{title if title else "TStudio"}}{% endblock %}
+
+{% block meta %}
+  {% if entrypoint.js %}
+    {% for asset in entrypoint.js %}
+      {{ macros.preload(asset.src, "script", prefix = staticURI) }}
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block html %}
+  <div id="app">App</div>
+{% endblock %}
+
+{# Include all the scripts from the entrypoint #}
+{% if entrypoint.js %}
+  {% block js %}
+    {% for asset in entrypoint.js %}
+      {{ macros.js(asset.src, asset.integrity, staticURI) }}
+    {% endfor %}
+  {% endblock %}
+{% endif %}
