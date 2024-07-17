@@ -6,7 +6,7 @@ Simple webpack setup for development only. Including :
 - :heavy_check_mark: webpack-dev-server (API)
 - :heavy_check_mark: express app server
 - :heavy_check_mark: react-refresh ([react-refresh-webpack-plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin/))
-- :heavy_check_mark: typescript (with ts-loader)
+- :heavy_check_mark: typescript (with babel-loader)
 - :heavy_check_mark: webpack-assets-manifest
 - :heavy_check_mark: using template (with nunjucks)
 
