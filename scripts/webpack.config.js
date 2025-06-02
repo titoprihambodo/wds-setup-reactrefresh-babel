@@ -1,5 +1,5 @@
 const path = require('path');
-const WebpackAssetsManifest = require('webpack-assets-manifest');
+const {WebpackAssetsManifest} = require('webpack-assets-manifest');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const resolvePathFromRoot = (relativePath) => 

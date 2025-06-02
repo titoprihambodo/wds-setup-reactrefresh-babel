@@ -1,6 +1,6 @@
 import {setLongTimeout} from 'long-settimeout';
-import fetch from 'node-fetch';
 import Entrypoints, {Entrypoint, RawEntrypoint} from './entrypoints';
+const fetch = import('node-fetch').then(module => module.default);
 
 export interface Asset {
   src: string;
@@ -36,10 +36,11 @@ export default class AssetManifest {
   // load method
   public async load(): Promise<Manifest> {
     if (this.loadFromWdsURL) {
+      const _fetch = await fetch;
       const url = `${this.loadFromWdsURL}/${this.manifestFileName}`
       const fetchManifest = async () => {
         // get the webpack assets information
-        const assets = await fetch(url);
+        const assets = await _fetch(url);
         if (!assets.ok) {
           console.error(
             "could not load the generated manifest",
@@ -47,7 +48,7 @@ export default class AssetManifest {
           );
           return null;
         }
-        const manifest:Manifest = await assets.json();
+        const manifest: Manifest = await assets.json() as Manifest;
         const firstEntrypoint = Object.keys(manifest.entrypoints)[0];
         if (
           !firstEntrypoint ||
@@ -100,7 +101,7 @@ export default class AssetManifest {
  */
 export function createManifestLoader() {
   const manifestFileName = 'assets-manifest.json';
-  const fromWds = `http://127.0.0.1:8080`; 
+  const fromWds = `http://localhost:8080`; 
   // use below to check if it's development env or production 
   // const fromWds = 
   //   process.env.WDS === 'true'

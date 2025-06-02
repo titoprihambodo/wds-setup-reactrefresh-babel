@@ -14,7 +14,7 @@ export async function createRouter(){
   const manifest = createManifestLoader();
   const entrypointLoader = manifest.createEntrypointLoader('main');
   const entrypoint = await entrypointLoader();
-  const staticURI = `http://127.0.0.1:8080/`;
+  const staticURI = `http://localhost:8080/`;
 
   router.get(
     "/",
@@ -24,7 +24,7 @@ export async function createRouter(){
   );
   
   router.get('/test', 
-    (req, res, next) => res.send('Hellow!')
+    (req, res: any, next) => res.send('Hellow!')
   );
 
   return router;

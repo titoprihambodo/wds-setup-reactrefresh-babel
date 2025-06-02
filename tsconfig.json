@@ -16,8 +16,8 @@
     "jsx": "react-jsx",                                /* Specify what JSX code is generated. */
 
     /* Modules */
-    "module": "CommonJS",                                /* Specify what module code is generated. */
-    "moduleResolution": "Node",                     /* Specify how TypeScript looks up a file from a given module specifier. */
+    "module": "node16",                                /* Specify what module code is generated. */
+    "moduleResolution": "node16",                     /* Specify how TypeScript looks up a file from a given module specifier. */
     "resolveJsonModule": true,                        /* Enable importing .json files. */
 
     /* JavaScript Support */
